@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    YourCalculator
+  </h1>
+</div>
+<div class="register" *ngIf="!enter">
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="username" #ctrl="ngModel">
+  <br>
+  <br>
+  <button (click)="onEnter()">Enter</button>
+</div>
+<div *ngIf="enter">
+  {{msgGreeting}}
+  <br>
+
+  Enter your values and select the operator, then click "Calculate"
+  <div class="calculator">
+    <input type="number" [(ngModel)]="value1">
+    <select [(ngModel)]="operator">
+      <option *ngFor="let op of operators" [value]="op">{{op}}</option>
+    </select>
+    <input type="number" [(ngModel)]="value2">
+    <button (click)="calculate()">Calculate</button>
+  </div>
+  Result:
+  <br>
+  {{result}}
+</div>
+<router-outlet></router-outlet>
